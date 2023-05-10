@@ -1,0 +1,24 @@
+# Archivos generados por el sistema
+node_modules/
+dist/
+*.log
+
+# Archivos de configuración
+.env
+.env.local
+.env.test
+.env.production
+npm-debug.log*
+
+# Dependencias de desarrollo y herramientas de construcción
+package-lock.json
+tsconfig.json
+.eslintcache
+*.bak
+*.log
+*.swp
+*.bak
+*.d.ts
+
+# Otros archivos y directorios a ignorar
+coverage/

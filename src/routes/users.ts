@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
+import Router from 'express-promise-router';
 
-const router = express.Router();
+// const router = express.Router();
+const router = Router();
 
 router.get('/', async (req: Request, res: Response) => {
   try {
@@ -12,7 +14,7 @@ router.get('/', async (req: Request, res: Response) => {
   }
 });
 
-function getUsers(): Promise<string[]> {
+function getUsers (): Promise<string[]> {
   return new Promise((resolve) => {
     setTimeout(() => {
       const users = ['Juan', 'María', 'Pedro'];

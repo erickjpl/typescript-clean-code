@@ -3,4 +3,5 @@ module.exports = {
   testEnvironment: "node",
   modulePathIgnorePatterns: ["<rootDir>/build/"],
   setupFilesAfterEnv: ["./tests/jest.setup.ts"],
+  cacheDirectory: ".tmp/jestCache",
 };

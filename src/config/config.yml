@@ -1,0 +1,7 @@
+services:
+  App.UserService:
+    class: "../services/UserService"
+  App.UserController:
+    class: "../controllers/UserController"
+    arguments:
+      - ["@App.UserService"]

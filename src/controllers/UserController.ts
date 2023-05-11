@@ -1,10 +1,11 @@
 import { Request, Response } from 'express';
 import { UserService } from '../services/UserService';
 
-class UserController {
+export default class UserController {
   constructor(private userService: UserService) { }
 
   list = async (req: Request, res: Response) => {
+    console.info(this.userService)
     const users = await this.userService.list();
     res.send(users);
   };
@@ -34,5 +35,3 @@ class UserController {
     res.send('Usuario eliminado correctamente');
   };
 }
-
-export default UserController;

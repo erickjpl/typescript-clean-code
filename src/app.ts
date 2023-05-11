@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -27,8 +27,8 @@ app.use(helmet());
 app.use(morgan('combined'));
 
 // Configura las rutas de la aplicación
-app.get("/", (req, res) => {
-  res.send("¡Hola, mundo!");
+app.get('/', (req: Request, res: Response) => {
+  res.send('¡Hola, mundo!');
 });
 
 app.use('/users', usersRouter);

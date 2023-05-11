@@ -1,11 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "outDir": "dist",
-    "strict": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true
+    "baseUrl": "./src", // La ruta base para la resolución de módulos
+    "esModuleInterop": true, // Habilitar la interoperabilidad de módulos ES
+    "module": "commonjs", // El sistema de módulos que se debe utilizar
+    "outDir": "dist", // El directorio de salida para los archivos compilados
+    "sourceMap": true, // Generar archivos de mapa de origen para depuración
+    "strict": true, // Habilitar todas las opciones estrictas de TypeScript
+    "target": "es6" // La versión de ECMAScript que se debe compilar
   },
-  "include": ["src"]
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "src", "test"
+  ]
 }

@@ -4,6 +4,11 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+import "reflect-metadata";
+
+import { container } from 'tsyringe';
+import BookController from './book/BookController';
+
 
 import usersRouter from './routes/users';
 
@@ -32,6 +37,8 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.use('/users', usersRouter);
+
+app.use('/books', container.resolve(BookController).routes());
 
 // Define el puerto en el que se ejecutará la aplicación
 const port = process.env.PORT || 3000;

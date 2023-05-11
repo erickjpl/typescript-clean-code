@@ -1,10 +1,10 @@
 import Router from 'express-promise-router';
-import container from '../config'
-import UserController from "../controllers/UserController";
+import { container } from 'tsyringe';
+import { UserController } from "../controllers/UserController";
 
 const router = Router();
 
-const controller: UserController = container.get('App.UserController');
+const controller = container.resolve<UserController>('UserController');
 
 router.get('/', controller.list);
 

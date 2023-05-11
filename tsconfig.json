@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "baseUrl": "./src", // La ruta base para la resolución de módulos
+    "emitDecoratorMetadata": true,
     "esModuleInterop": true, // Habilitar la interoperabilidad de módulos ES
+    "experimentalDecorators": true,
     "module": "commonjs", // El sistema de módulos que se debe utilizar
     "outDir": "dist", // El directorio de salida para los archivos compilados
     "sourceMap": true, // Generar archivos de mapa de origen para depuración
@@ -12,6 +14,7 @@
     "node_modules"
   ],
   "include": [
-    "src", "test"
+    "src",
+    "test"
   ]
 }

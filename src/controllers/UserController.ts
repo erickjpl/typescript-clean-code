@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
+import { autoInjectable } from 'tsyringe';
 import { UserService } from '../services/UserService';
 
-export default class UserController {
+@autoInjectable()
+export class UserController {
   constructor(private userService: UserService) { }
 
   list = async (req: Request, res: Response) => {

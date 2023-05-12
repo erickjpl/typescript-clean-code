@@ -1,4 +1,4 @@
-import { BackendApp } from '../../../common/config/BackendApp';
+import { BackendApp } from "./common/config/BackendApp";
 
 try {
   new BackendApp().start().catch(handleError);

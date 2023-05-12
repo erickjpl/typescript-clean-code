@@ -6,7 +6,8 @@ export function registerRoutes (router: Router) {
   const routes = [
     `${__dirname}/guest.route.ts`,
     `${__dirname}/users.route.ts`,
-    `${__dirname}/products.route.ts`
+    `${__dirname}/products.route.ts`,
+    `${__dirname}/hexagonal-products.route`
   ]
   routes.map(route => register(route, router));
 }

@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { autoInjectable } from 'tsyringe';
 import httpStatus from 'http-status';
 
-import { Controller } from 'common/Controller';
+import { Controller } from '../common/Controller';
 import ProductService from './ProductService';
 
 @autoInjectable()

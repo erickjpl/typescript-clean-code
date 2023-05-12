@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { UserController } from "../users/UserController";
 import { container } from 'tsyringe';
 
-const path = 'products'
+const path = 'users'
 
 export const register = (router: Router) => {
   const userController = container.resolve(UserController);

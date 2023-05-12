@@ -1,0 +1,24 @@
+parameters:
+  db:
+    host: localhost
+    port: 3306
+    database: mydatabase
+    username: myusername
+    password: mypassword
+
+services:
+  UserRepository:
+    class: "./src/repositories/UserRepository"
+    arguments:
+      - "@Database"
+  Database:
+    class: "./src/services/Database"
+    arguments:
+      - "%db%"
+  UserService:
+    class: "./src/services/UserService"
+    arguments:
+      - "@UserRepository"
+      - "@Logger"
+  Logger:
+    class: "./src/services/Logger"

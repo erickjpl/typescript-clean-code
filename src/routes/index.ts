@@ -2,12 +2,13 @@ import { Router } from 'express';
 import glob from 'glob';
 
 export function registerRoutes (router: Router) {
-  try {
-    const routes = glob.sync(`${__dirname}/**/*.route.*`);
-    routes.map(route => register(route, router));
-  } catch (e) {
-    console.info(e)
-  }
+  // const routes = glob.sync(`${__dirname}/**/*.route.*`);
+  const routes = [
+    `${__dirname}/guest.route.ts`,
+    `${__dirname}/users.route.ts`,
+    `${__dirname}/products.route.ts`
+  ]
+  routes.map(route => register(route, router));
 }
 
 function register (routePath: string, router: Router) {

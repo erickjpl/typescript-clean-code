@@ -1,2 +1,6 @@
 export * from './AggregateRoot'
 export * from './criteria/Criteria'
+export * from './criteria/Filter'
+export * from './criteria/FilterOperator'
+export * from './criteria/Filters'
+export * from './criteria/Order'

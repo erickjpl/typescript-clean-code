@@ -1,8 +1,4 @@
-import { Criteria } from '../../../../Shared/domain/criteria/Criteria';
-import { Filter } from '../../../../Shared/domain/criteria/Filter';
-import { Operator } from '../../../../Shared/domain/criteria/FilterOperator';
-import { Filters } from '../../../../Shared/domain/criteria/Filters';
-import { Order } from '../../../../Shared/domain/criteria/Order';
+import { Criteria, Filter, Operator, Filters, Order } from '../../../../Shared/domain';
 
 type MongoFilterOperator = '$eq' | '$ne' | '$gt' | '$lt' | '$regex';
 type MongoFilterValue = boolean | string | number;
@@ -36,7 +32,7 @@ export class MongoCriteriaConverter {
     ]);
   }
 
-  public convert(criteria: Criteria): MongoQuery {
+  public convert (criteria: Criteria): MongoQuery {
     return {
       filter: criteria.hasFilters() ? this.generateFilter(criteria.filters) : {},
       sort: criteria.order.hasOrder() ? this.generateSort(criteria.order) : { _id: -1 },
@@ -45,7 +41,7 @@ export class MongoCriteriaConverter {
     };
   }
 
-  protected generateFilter(filters: Filters): MongoFilter {
+  protected generateFilter (filters: Filters): MongoFilter {
     const filter = filters.filters.map(filter => {
       const transformer = this.filterTransformers.get(filter.operator.value);
 
@@ -59,33 +55,33 @@ export class MongoCriteriaConverter {
     return Object.assign({}, ...filter);
   }
 
-  protected generateSort(order: Order): MongoSort {
+  protected generateSort (order: Order): MongoSort {
     return {
       [order.orderBy.value === 'id' ? '_id' : order.orderBy.value]: order.orderType.isAsc() ? 1 : -1
     };
   }
 
-  private equalFilter(filter: Filter): MongoFilter {
+  private equalFilter (filter: Filter): MongoFilter {
     return { [filter.field.value]: { $eq: filter.value.value } };
   }
 
-  private notEqualFilter(filter: Filter): MongoFilter {
+  private notEqualFilter (filter: Filter): MongoFilter {
     return { [filter.field.value]: { $ne: filter.value.value } };
   }
 
-  private greaterThanFilter(filter: Filter): MongoFilter {
+  private greaterThanFilter (filter: Filter): MongoFilter {
     return { [filter.field.value]: { $gt: filter.value.value } };
   }
 
-  private lowerThanFilter(filter: Filter): MongoFilter {
+  private lowerThanFilter (filter: Filter): MongoFilter {
     return { [filter.field.value]: { $lt: filter.value.value } };
   }
 
-  private containsFilter(filter: Filter): MongoFilter {
+  private containsFilter (filter: Filter): MongoFilter {
     return { [filter.field.value]: { $regex: filter.value.value } };
   }
 
-  private notContainsFilter(filter: Filter): MongoFilter {
+  private notContainsFilter (filter: Filter): MongoFilter {
     return { [filter.field.value]: { $not: { $regex: filter.value.value } } };
   }
 }
